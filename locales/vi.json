@@ -1,0 +1,487 @@
+{
+ "meta": {
+  "title": "ROCKET // Falcon 9 & Starship 3D",
+  "desc": "Mô hình 3D tương tác về cấu tạo và chuyến bay của tên lửa kiểu Falcon 9 và Starship: bộ phận, CG/CP, thu hồi tầng đẩy, hot staging, tháp bắt. Tiếng Việt, English, 日本語, 한국어."
+ },
+ "a11y": {
+  "skip": "Bỏ qua tới nội dung"
+ },
+ "loader": {
+  "label": "Đang khởi động hệ thống"
+ },
+ "sys": {
+  "online": "HỆ THỐNG TRỰC TUYẾN",
+  "clock": "GIỜ",
+  "vehicle": "PHƯƠNG TIỆN",
+  "fps": "KHUNG/GIÂY"
+ },
+ "nav": {
+  "specs": "Thông số",
+  "phases": "Pha bay",
+  "sim": "Mô phỏng",
+  "news": "Tin tức",
+  "lang": "Ngôn ngữ"
+ },
+ "ctl": {
+  "vehicle": "PHƯƠNG TIỆN",
+  "mode": "CHẾ ĐỘ",
+  "anatomy": "CẤU TẠO",
+  "mission": "NHIỆM VỤ",
+  "scenario": "KỊCH BẢN",
+  "landing": "ĐIỂM HẠ CÁNH",
+  "boosterEnd": "KẾT THÚC TẦNG ĐẨY",
+  "camera": "CAMERA",
+  "tools": "CÔNG CỤ",
+  "explode": "TÁCH RỜI",
+  "xray": "X-QUANG",
+  "cut": "MẶT CẮT",
+  "cgcp": "CG / CP",
+  "rotate": "TỰ XOAY",
+  "reset": "ĐẶT LẠI",
+  "parts": "BỘ PHẬN",
+  "play": "PHÓNG",
+  "pause": "TẠM DỪNG",
+  "resume": "TIẾP TỤC",
+  "restart": "LÀM LẠI",
+  "speed": "TỐC ĐỘ",
+  "quality": "CHẤT LƯỢNG",
+  "qHigh": "CAO",
+  "qLow": "THẤP",
+  "settings": "TÙY CHỈNH",
+  "replay": "XEM LẠI",
+  "qAuto": "TỰ ĐỘNG",
+  "qMid": "CÂN BẰNG"
+ },
+ "scn": {
+  "f9": {
+   "booster": "THEO TẦNG ĐẨY",
+   "full": "LÊN QUỸ ĐẠO"
+  },
+  "ss": {
+   "ship": "THEO TÀU SHIP",
+   "booster": "THEO SUPER HEAVY"
+  }
+ },
+ "opt": {
+  "asds": "TÀU KHÔNG NGƯỜI LÁI",
+  "rtls": "BÃI ĐÁP",
+  "catch": "THÁP BẮT",
+  "gulf": "RƠI XUỐNG VỊNH"
+ },
+ "cam": {
+  "auto": "TỰ ĐỘNG",
+  "chase": "BÁM THEO",
+  "onboard": "TRÊN THÂN",
+  "booster": "LIÊN TẦNG",
+  "flap": "CAM CÁNH",
+  "ground": "MẶT ĐẤT",
+  "wide": "TOÀN CẢNH"
+ },
+ "graph": {
+  "alt": "ĐỘ CAO THEO THỜI GIAN"
+ },
+ "pn": {
+  "height": "CHIỀU CAO",
+  "mass": "KHỐI LƯỢNG CẤT CÁNH",
+  "thrust": "LỰC ĐẨY MẶT ĐẤT",
+  "margin": "ĐỘ ỔN ĐỊNH (CG−CP)"
+ },
+ "pnsub": {
+  "f9": {
+   "h": "2 TẦNG · Ø3,7 M",
+   "m": "~92% LÀ NHIÊN LIỆU",
+   "t": "9 ĐỘNG CƠ · ~845 KN MỖI CÁI",
+   "s": "M · {cal} CỠ · CP TRÊN CG → GIMBAL GIỮ HƯỚNG"
+  },
+  "ss": {
+   "h": "SUPER HEAVY 71 M + SHIP 52 M",
+   "m": "~4.600 T NHIÊN LIỆU",
+   "t": "33 ĐỘNG CƠ · ~2,3 MN MỖI CÁI",
+   "s": "M · {cal} CỠ · CP TRÊN CG → GIMBAL GIỮ HƯỚNG"
+  }
+ },
+ "hud": {
+  "speed": "TỐC ĐỘ",
+  "alt": "ĐỘ CAO",
+  "booster": "TẦNG ĐẨY",
+  "ship": "TÀU SHIP",
+  "s2": "TẦNG 2",
+  "ready": "SẴN SÀNG · BẤM PHÓNG"
+ },
+ "stage": {
+  "booster": "TẦNG 1 · TẦNG ĐẨY",
+  "upper": "TẦNG 2",
+  "ship": "TÀU SHIP",
+  "sh": "SUPER HEAVY",
+  "stack": "CẢ TÊN LỬA"
+ },
+ "tc": {
+  "stage": "TẦNG",
+  "mass": "KHỐI LƯỢNG KHÔ",
+  "prop": "NHIÊN LIỆU",
+  "dims": "KÍCH THƯỚC",
+  "mat": "VẬT LIỆU",
+  "alt": "ĐỘ CAO",
+  "spd": "TỐC ĐỘ",
+  "dr": "CỰ LY"
+ },
+ "mk": {
+  "cg": "CG · TRỌNG TÂM",
+  "cp": "CP · TÂM ÁP LỰC"
+ },
+ "ev": {
+  "prelaunch": "TRƯỚC KHI PHÓNG",
+  "liftoff": "CẤT CÁNH",
+  "maxq": "MAX-Q",
+  "meco": "TẮT ĐỘNG CƠ CHÍNH",
+  "sep": "TÁCH TẦNG",
+  "ses": "TẦNG 2 KHAI HỎA",
+  "fairing": "TÁCH CHỤP MŨI",
+  "seco": "TẦNG 2 TẮT MÁY",
+  "boostback": "QUAY ĐẦU",
+  "boostbackEnd": "XONG QUAY ĐẦU",
+  "gridfins": "MỞ CÁNH LƯỚI",
+  "entry": "ĐỐT VÀO KHÍ QUYỂN",
+  "landing": "ĐỐT HẠ CÁNH",
+  "legs": "BUNG CHÂN",
+  "touchdownLZ": "CHẠM ĐẤT · BÃI ĐÁP",
+  "touchdownASDS": "CHẠM ĐẤT · TÀU",
+  "hotstaging": "HOT STAGING",
+  "ringJettison": "THẢ VÒNG LIÊN TẦNG",
+  "bLanding": "TẦNG ĐẨY ĐỐT HẠ CÁNH",
+  "catch": "THÁP BẮT",
+  "bSplash": "TẦNG ĐẨY RƠI XUỐNG BIỂN",
+  "payload": "THẢ TẢI TRỌNG",
+  "relight": "ĐỐT LẠI RAPTOR",
+  "peakHeat": "NHIỆT ĐỘ ĐỈNH",
+  "transonic": "CẬN ÂM",
+  "subsonic": "DƯỚI TỐC ĐỘ ÂM",
+  "sLanding": "ĐỐT HẠ CÁNH",
+  "flip": "LẬT THẲNG ĐỨNG",
+  "splash": "HẠ XUỐNG BIỂN"
+ },
+ "evd": {
+  "prelaunch": "Đã nạp nhiên liệu, kiểm tra lần cuối",
+  "liftoff": "Toàn bộ động cơ hết công suất, tên lửa rời tháp",
+  "maxq": "Áp lực khí động lớn nhất: động cơ giảm ga",
+  "meco": "Tầng 1 tắt động cơ chính",
+  "sep": "Tầng 1 và tầng 2 tách nhau",
+  "ses": "Động cơ chân không của tầng 2 khai hỏa",
+  "fairing": "Hai nửa chụp mũi rơi ra khi đã qua lớp khí dày",
+  "seco": "Tầng 2 tắt máy: đã vào quỹ đạo",
+  "boostback": "Tầng đẩy lật ngược và đốt để bay về bãi phóng",
+  "boostbackEnd": "Xong quay đầu, bay theo quán tính",
+  "gridfins": "Cánh lưới lái tầng đẩy khi rơi",
+  "entry": "3 động cơ hãm tốc trước lớp khí dày",
+  "landing": "Một động cơ đốt hạ cánh",
+  "legs": "Bốn chân hạ cánh bung ra",
+  "touchdownLZ": "Tầng đẩy đáp xuống bãi đáp",
+  "touchdownASDS": "Tầng đẩy đáp xuống tàu không người lái",
+  "hotstaging": "Ship khai hỏa trước khi tách",
+  "ringJettison": "Thả vòng hot staging",
+  "bLanding": "13 rồi 5 động cơ hãm Super Heavy",
+  "catch": "Cánh tay tháp bắt lấy tầng đẩy",
+  "bSplash": "Super Heavy lơ lửng rồi rơi xuống Vịnh",
+  "payload": "Thả 8 vệ tinh mô phỏng Starlink",
+  "relight": "Đốt lại một Raptor trong không gian",
+  "peakHeat": "Plasma ~1.400 °C bao lấy tấm chắn nhiệt",
+  "transonic": "Dưới Mach 1,2, cánh giữ tư thế nằm ngang",
+  "subsonic": "Rơi nằm ngang ở ~300 km/h",
+  "sLanding": "Đốt lại động cơ để lật hạ cánh",
+  "flip": "Tàu lật thẳng đứng",
+  "splash": "Hạ xuống Ấn Độ Dương"
+ },
+ "parts": {
+  "merlin": {
+   "name": "9 ĐỘNG CƠ MERLIN",
+   "mat": "Inconel, buồng đốt hợp kim đồng",
+   "fn": "Chín động cơ dầu hỏa/oxy lỏng xếp kiểu octaweb: tám cái quanh một cái ở giữa. Mỗi cái ~845 kN ở mặt đất, giảm ga được và đốt lại được để hạ cánh."
+  },
+  "legs": {
+   "name": "CHÂN HẠ CÁNH",
+   "mat": "Sợi carbon, tổ ong nhôm",
+   "fn": "Bốn chân gập, bung ra vài giây trước khi chạm đất và hấp thụ va chạm."
+  },
+  "s1tank": {
+   "name": "BỒN TẦNG 1",
+   "mat": "Hợp kim nhôm-lithi",
+   "fn": "Bồn oxy lỏng nằm trên bồn RP-1, tổng ~411 t nhiên liệu; vỏ bồn chính là khung chịu lực của tên lửa."
+  },
+  "interstage": {
+   "name": "LIÊN TẦNG",
+   "mat": "Composite sợi carbon",
+   "fn": "Nối hai tầng và che động cơ chân không; cơ cấu khí nén đẩy hai tầng tách ra."
+  },
+  "gridfins": {
+   "name": "CÁNH LƯỚI",
+   "mat": "Titan đúc",
+   "fn": "Bốn cánh dạng lưới lái tầng đẩy khi rơi, giống bánh lái."
+  },
+  "mvac": {
+   "name": "ĐỘNG CƠ CHÂN KHÔNG",
+   "mat": "Loa phụt niobi",
+   "fn": "Một động cơ có loa phụt rất lớn, tối ưu cho chân không: ~981 kN."
+  },
+  "s2tank": {
+   "name": "BỒN TẦNG 2",
+   "mat": "Hợp kim nhôm-lithi",
+   "fn": "~107 t nhiên liệu để hoàn tất chặng lên quỹ đạo."
+  },
+  "capsule": {
+   "name": "KHOANG TÀU",
+   "mat": "Composite, tấm chắn PICA",
+   "fn": "Cấu hình chở người hoặc hàng lên trạm vũ trụ."
+  },
+  "payload": {
+   "name": "TẢI TRỌNG",
+   "mat": "—",
+   "fn": "Vệ tinh cần phóng, gắn trên bộ chuyển tiếp."
+  },
+  "fairing": {
+   "name": "CHỤP MŨI",
+   "mat": "Sợi carbon bọc lõi nhôm",
+   "fn": "Hai vỏ bảo vệ tải trọng khi bay qua khí quyển, sau đó tách đôi."
+  },
+  "raptors": {
+   "name": "33 ĐỘNG CƠ RAPTOR",
+   "mat": "Siêu hợp kim",
+   "fn": "Động cơ methane/oxy lỏng chu trình full-flow: 13 cái giữa xoay hướng được, 20 cái ngoài cố định. Tổng ~74 MN."
+  },
+  "shTank": {
+   "name": "BỒN SUPER HEAVY",
+   "mat": "Thép không gỉ 304L",
+   "fn": "Khoảng 3.400 t methane và oxy lỏng trong bồn thép."
+  },
+  "gridfinsSH": {
+   "name": "CÁNH LƯỚI SUPER HEAVY",
+   "mat": "Thép không gỉ",
+   "fn": "Lái tầng đẩy và làm điểm tựa khi tháp bắt."
+  },
+  "hotRing": {
+   "name": "VÒNG HOT STAGING",
+   "mat": "Thép không gỉ, có lỗ thoát",
+   "fn": "Vòng có lỗ thoát khí cho phép Ship khai hỏa khi còn gắn với tầng đẩy."
+  },
+  "shipEngines": {
+   "name": "ĐỘNG CƠ SHIP",
+   "mat": "Siêu hợp kim",
+   "fn": "3 Raptor mặt đất để hạ cánh và 3 Raptor chân không để lên quỹ đạo."
+  },
+  "shipTank": {
+   "name": "BỒN SHIP",
+   "mat": "Thép không gỉ 304L",
+   "fn": "~1.500 t nhiên liệu cùng bồn phụ dùng khi lật hạ cánh."
+  },
+  "payloadBay": {
+   "name": "KHOANG TẢI",
+   "mat": "Thép không gỉ",
+   "fn": "Khe kiểu 'hộp kẹo Pez' thả từng vệ tinh Starlink."
+  },
+  "heatshield": {
+   "name": "TẤM CHẮN NHIỆT",
+   "mat": "Gạch gốm lục giác",
+   "fn": "~18.000 viên gạch lục giác màu đen bảo vệ bụng tàu khỏi plasma ~1.400 °C."
+  },
+  "flaps": {
+   "name": "CÁNH ĐIỀU KHIỂN",
+   "mat": "Thép không gỉ",
+   "fn": "Hai cánh trước và hai cánh sau lái tư thế rơi nằm ngang, như tay chân của người nhảy dù."
+  }
+ },
+ "specs": {
+  "title": "Thông số kỹ thuật",
+  "lead": "Số liệu công khai, làm tròn. Hai tên lửa cùng một tỷ lệ.",
+  "f9sub": "Block 5 · 2 tầng",
+  "sssub": "Block 2 · Super Heavy + Ship",
+  "cmpAria": "So sánh chiều cao Falcon 9 và Starship",
+  "building": "NHÀ 10 TẦNG ~30 M",
+  "cgTitle": "CG và CP — vì sao tên lửa thật không có cánh đuôi lớn?",
+  "cgBody": "Tên lửa mô hình ổn định khi trọng tâm (CG) nằm trên tâm áp lực (CP), thường cách 1–2 lần đường kính thân, nên cần cánh đuôi. Tên lửa lớn bay phần lớn trên lớp khí dày và lái bằng cách xoay động cơ (gimbal), nên vẫn điều khiển được dù biên ổn định nhỏ; cánh lưới và cánh điều khiển chỉ làm việc lúc rơi về. Trong mô hình này biên âm: không có cánh đuôi nên CP nằm trên CG, tên lửa không tự ổn định khí động và nhờ gimbal động cơ giữ hướng."
+ },
+ "spec": {
+  "k": {
+   "height": "Chiều cao",
+   "diam": "Đường kính",
+   "mass": "Khối lượng cất cánh",
+   "stages": "Số tầng",
+   "engines": "Động cơ",
+   "thrust": "Lực đẩy mặt đất",
+   "leoExp": "Tải LEO (bỏ tầng)",
+   "leoReuse": "Tải LEO (tái sử dụng)",
+   "gto": "Tải GTO",
+   "leo": "Tải LEO",
+   "prop": "Nhiên liệu",
+   "recovery": "Thu hồi",
+   "f11": "Flight 11"
+  },
+  "v": {
+   "f9eng": "9 Merlin 1D + 1 MVac",
+   "f9rec": "Tầng đẩy đáp bằng chân (tàu hoặc bãi đáp)",
+   "sseng": "33 Raptor + 6 Raptor",
+   "ssleo": "100–150 t (mục tiêu, tái sử dụng)",
+   "ssrec": "Tầng đẩy được tháp bắt; Ship thiết kế để tháp bắt",
+   "f11": "13/10/2025 (giờ Mỹ) · 14/10/2025 06:23 UTC+7 · ~66 phút"
+  }
+ },
+ "phases": {
+  "title": "Các pha bay",
+  "lead": "Từ lúc rời bệ tới lúc tầng đẩy trở về.",
+  "f9": [
+   {
+    "t": "T+0",
+    "h": "Cất cánh",
+    "p": "Chín động cơ ~7,6 MN nâng 549 t. Tên lửa bay thẳng đứng rồi nghiêng nhẹ về phía đông."
+   },
+   {
+    "t": "T+1:12",
+    "h": "Max-Q",
+    "p": "Áp lực khí động lớn nhất. Động cơ giảm ga một lúc để thân không bị quá tải."
+   },
+   {
+    "t": "T+2:30",
+    "h": "Tắt máy & tách tầng",
+    "p": "Tầng 1 tắt ở ~70 km, ~8.000 km/h; hai tầng tách và động cơ chân không khai hỏa."
+   },
+   {
+    "t": "T+2:40",
+    "h": "Lật & quay đầu",
+    "p": "Nếu về bãi đáp, tầng đẩy lật ngược và đốt bay về. Nếu đáp tàu thì chỉ lật và bay tiếp theo quán tính."
+   },
+   {
+    "t": "T+6:30",
+    "h": "Đốt vào khí quyển",
+    "p": "Ba động cơ đốt ~20 giây để giảm từ ~5.000 km/h, tránh tầng đẩy bị nung nóng."
+   },
+   {
+    "t": "T+8:00",
+    "h": "Hạ cánh",
+    "p": "Một động cơ, bung chân, chạm tàu hoặc bãi đáp ở khoảng 2 m/s."
+   },
+   {
+    "t": "T+8:30",
+    "h": "Vào quỹ đạo",
+    "p": "Tầng 2 tắt máy ở ~27.000 km/h: tải trọng đã vào quỹ đạo."
+   }
+  ],
+  "ss": [
+   {
+    "t": "T+0",
+    "h": "Cất cánh · Starbase",
+    "p": "33 Raptor, ~74 MN. Flight 11 cất cánh ngày 13/10/2025 (giờ Mỹ), tức 06:23 ngày 14/10 UTC+7."
+   },
+   {
+    "t": "T+2:40",
+    "h": "Hot staging",
+    "p": "Ship khai hỏa 6 động cơ khi còn gắn với tầng đẩy, đẩy ra qua vòng có lỗ thoát."
+   },
+   {
+    "t": "T+2:50",
+    "h": "Quay đầu",
+    "p": "Super Heavy lật, đốt bay ngược, thả vòng liên tầng và hướng về Vịnh Mexico."
+   },
+   {
+    "t": "T+6:36",
+    "h": "Tầng đẩy xuống biển",
+    "p": "13 rồi 5 động cơ hãm tầng đẩy tới lơ lửng rồi rơi xuống biển (hoặc được tháp bắt)."
+   },
+   {
+    "t": "T+18",
+    "h": "Thả tải trọng",
+    "p": "Ship bay theo quán tính và thả 8 vệ tinh mô phỏng Starlink qua cửa khoang."
+   },
+   {
+    "t": "T+38",
+    "h": "Đốt lại Raptor",
+    "p": "Một động cơ được đốt lại trong không gian, tập cho lần đốt rời quỹ đạo."
+   },
+   {
+    "t": "T+48",
+    "h": "Trở lại khí quyển",
+    "p": "Bụng hướng xuống ở ~26.000 km/h; plasma bao lấy gạch lục giác, cánh điều khiển giữ hướng."
+   },
+   {
+    "t": "T+66",
+    "h": "Lật & hạ xuống biển",
+    "p": "Động cơ đốt lại, tàu lật thẳng đứng và hạ xuống Ấn Độ Dương."
+   }
+  ]
+ },
+ "sim": {
+  "title": "Mô phỏng quỹ đạo",
+  "lead": "Mô phỏng 2D (trọng lực, khí quyển, Trái Đất quay) cho Falcon 9; hồ sơ Starship lấy theo mốc thời gian Flight 11.",
+  "payload": "TẢI TRỌNG",
+  "asds": "TÀU KHÔNG NGƯỜI LÁI",
+  "rtls": "VỀ BÃI ĐÁP",
+  "expend": "BỎ TẦNG ĐẨY",
+  "chartAlt": "ĐỘ CAO (KM) — THỜI GIAN (S)",
+  "chartVel": "VẬN TỐC (KM/H) — THỜI GIAN (S)",
+  "results": "KẾT QUẢ",
+  "chartSS": "STARSHIP FLIGHT 11 — ĐỘ CAO (KM) / THỜI GIAN (PHÚT)",
+  "o": {
+   "orbit": "Quỹ đạo",
+   "noOrbit": "Không đạt",
+   "maxq": "Max-Q",
+   "maxg": "Gia tốc đỉnh",
+   "meco": "Tắt máy tầng 1",
+   "seco": "Tắt máy tầng 2",
+   "s2left": "Nhiên liệu tầng 2 còn",
+   "land": "Tầng đẩy hạ cánh",
+   "vtouch": "Tốc độ chạm",
+   "propLeft": "Nhiên liệu tầng đẩy còn",
+   "apogeeB": "Điểm cao nhất tầng đẩy",
+   "expended": "Bỏ tầng đẩy"
+  }
+ },
+ "news": {
+  "title": "Tin tức · Starship Flight 11",
+  "lead": "Tóm tắt bài báo và các mốc liên quan.",
+  "headline": "SpaceX phóng tên lửa lớn nhất lịch sử lên vũ trụ",
+  "read": "Đọc bài gốc",
+  "facts": [
+   "Đêm 13/10 (giờ Mỹ), Starship, tên lửa lớn nhất và mạnh nhất từng được chế tạo, được phóng từ mũi phía nam bang Texas.",
+   "Đây là chuyến bay thử nghiệm thứ 11; tầng đẩy tách ra và tiến vào Vịnh Mexico đúng kế hoạch.",
+   "Tàu mang 8 vệ tinh mô phỏng Starlink, bay nửa vòng Trái Đất rồi đáp xuống Ấn Độ Dương.",
+   "Toàn bộ chuyến bay kéo dài hơn 1 giờ, xuất phát từ Starbase gần biên giới Mexico.",
+   "Các bài kiểm tra trên Ấn Độ Dương là để tập cho việc trở về bãi phóng sau này; chuyến bay tháng 8 cũng thành công với lộ trình tương tự.",
+   "Starship được dự định đưa người lên sao Hỏa; mục tiêu gần hơn là đưa phi hành gia NASA lên Mặt Trăng vào cuối thập kỷ này."
+  ],
+  "timeline": [
+   {
+    "t": "14/10/2025 06:23 UTC+7",
+    "p": "Cất cánh từ Starbase, Texas (18:23 ngày 13/10 giờ địa phương)."
+   },
+   {
+    "t": "+2 phút 40 giây",
+    "p": "Hot staging; Super Heavy quay đầu về Vịnh."
+   },
+   {
+    "t": "+6 phút 40 giây",
+    "p": "Tầng đẩy đốt hạ cánh và rơi xuống Vịnh Mexico."
+   },
+   {
+    "t": "+~18 phút",
+    "p": "Thả 8 vệ tinh mô phỏng Starlink."
+   },
+   {
+    "t": "+~66 phút",
+    "p": "Ship hạ xuống Ấn Độ Dương (~07:29 UTC+7)."
+   },
+   {
+    "t": "14/10/2025 08:14 UTC+7",
+    "p": "Báo Tiền Phong đăng bài."
+   }
+  ]
+ },
+ "safety": {
+  "title": "Ghi chú & nguồn",
+  "h1": "Về mô hình",
+  "p1": "Đây là mô phỏng giáo dục, không phải dữ liệu kỹ thuật. Hình học đã đơn giản hóa, khối lượng và mốc thời gian là ước tính công khai, quỹ đạo Falcon 9 tính bằng mô hình 2D đơn giản. Không dùng logo hay nhãn hiệu.",
+  "h2": "Nguồn số liệu"
+ },
+ "foot": {
+  "made": "Làm tặng Khánh · mô hình giáo dục, không liên kết với SpaceX"
+ },
+ "toast": {
+  "lowq": "Đã giảm chất lượng để mượt hơn"
+ }
+}

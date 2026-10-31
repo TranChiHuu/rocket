@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rocket — Mission Control 3D · Falcon 9 & Starship</title>
+<meta name="description" content="Interactive 3D models of Falcon 9- and Starship-style rockets: anatomy, specs, full flight simulation, hot staging and booster recovery.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body class="is-loading">
+<a class="skip" href="#specs" data-i18n="a11y.skip">Skip to content</a>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" role="status" aria-live="polite">
+  <div class="ld-grid" aria-hidden="true"></div>
+  <div class="ld-center">
+    <svg class="ld-rocket" viewBox="0 0 60 160" aria-hidden="true">
+      <g class="ld-body"><path d="M30 6c9 10 12 24 12 40v74H18V46c0-16 3-30 12-40z" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <path d="M18 100l-10 22h10zM42 100l10 22h-10z" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <line x1="18" y1="64" x2="42" y2="64" stroke="#666"/><line x1="18" y1="90" x2="42" y2="90" stroke="#666"/></g>
+      <g class="ld-flame"><path d="M22 122q8 30 8 36q0-6 8-36z" fill="#ff3b1f"/><path d="M26 122q4 16 4 22q0-6 4-22z" fill="#ffd9a0"/></g>
+    </svg>
+    <div class="ld-title">ROCKET<span>//</span>MISSION CONTROL</div>
+    <div class="ld-row"><span data-i18n="loader.label">Booting systems</span><b id="ld-pct">000</b></div>
+    <div class="ld-bar"><i id="ld-fill"></i></div>
+    <ul class="ld-log" id="ld-log" aria-hidden="true"></ul>
+  </div>
+</div>
+
+<!-- ============ HERO / HUD ============ -->
+<main id="top">
+<section id="hud" class="hud" data-mode="mission" aria-label="Mission control">
+  <canvas id="gl" aria-label="3D" role="img"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+
+  <!-- top row -->
+  <header class="hud-top">
+    <div class="sys">
+      <p><span class="dot"></span><b id="clock">--:--:--</b> UTC+7<span hidden><span data-i18n="sys.online">SYSTEM ONLINE</span><b id="sys-veh">F9</b><b id="fps">--</b></span></p>
+    </div>
+    <a class="logo" href="#top" aria-label="Rocket">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c3 3 4.5 7 4.5 11v5h-9v-5C7.5 9 9 5 12 2z"/><path d="M7.5 15 4 19h3.5M16.5 15 20 19h-3.5"/></svg>
+      <span>ROCKET</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#specs" data-i18n="nav.specs">Specs</a>
+      <a href="#phases" data-i18n="nav.phases">Phases</a>
+      <a href="#sim" data-i18n="nav.sim">Simulation</a>
+      <a href="#news" data-i18n="nav.news">News</a>
+      <div class="lang">
+        <button id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><span id="lang-cur">EN</span><svg><use href="assets/icons.svg#i-chevron-down"/></svg></button>
+        <ul id="lang-list" role="listbox" hidden>
+          <li role="option" data-lang="vi">VI · Tiếng Việt</li>
+          <li role="option" data-lang="en">EN · English</li>
+          <li role="option" data-lang="ja">JA · 日本語</li>
+          <li role="option" data-lang="ko">KO · 한국어</li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- left controls: essentials only -->
+  <div class="hud-left">
+    <fieldset class="seg" id="seg-rocket">
+      <legend data-i18n="ctl.vehicle">VEHICLE</legend>
+      <button data-rocket="f9" aria-pressed="true">FALCON 9</button>
+      <button data-rocket="ss" aria-pressed="false">STARSHIP</button>
+    </fieldset>
+    <fieldset class="seg" id="seg-mode">
+      <legend data-i18n="ctl.mode">MODE</legend>
+      <button data-mode="mission" aria-pressed="true" data-i18n="ctl.mission">MISSION</button>
+      <button data-mode="anatomy" aria-pressed="false" data-i18n="ctl.anatomy">ANATOMY</button>
+    </fieldset>
+    <label class="range only-anatomy explode-q"><span data-i18n="ctl.explode">EXPLODE</span><input id="explode" type="range" min="0" max="1" step="0.01" value="0"><b id="explode-v">0%</b></label>
+    <button id="more-btn" class="tg more-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="more-pop"><svg aria-hidden="true"><use href="assets/icons.svg#i-sliders"/></svg><span data-i18n="ctl.settings">SETTINGS</span></button>
+  </div>
+
+  <!-- right column: parts / info -->
+  <aside class="hud-right only-anatomy" aria-label="Parts">
+    <p class="lbl"><span data-i18n="ctl.parts">PARTS</span> <b id="parts-count">00</b></p>
+    <ol id="part-list"></ol>
+  </aside>
+
+  <!-- mission controls -->
+  <div class="hud-play only-mission">
+    <button id="m-play" class="tg big" aria-pressed="false"><svg><use href="assets/icons.svg#i-play"/></svg><span data-i18n="ctl.play">LAUNCH</span></button>
+  </div>
+
+  <!-- settings popover: secondary, contextual controls -->
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+  <div class="more-pop" id="more-pop" role="dialog" aria-label="Settings" hidden>
+    <div class="sheet-h"><i class="grab" aria-hidden="true"></i><span data-i18n="ctl.settings">SETTINGS</span><button id="more-x" class="sheet-x" aria-label="Close"><svg aria-hidden="true"><use href="assets/icons.svg#i-close"/></svg></button></div>
+    <div id="ex-slot" class="only-anatomy ex-slot"></div>
+    <fieldset class="seg only-mission" id="seg-scn">
+      <legend data-i18n="ctl.scenario">SCENARIO</legend>
+      <div id="scn-list"></div>
+    </fieldset>
+    <fieldset class="seg only-mission" id="seg-opt">
+      <legend id="opt-legend" data-i18n="ctl.landing">LANDING SITE</legend>
+      <div id="opt-list"></div>
+    </fieldset>
+    <fieldset class="seg only-mission" id="seg-cam">
+      <legend data-i18n="ctl.camera">CAMERA</legend>
+      <div id="cam-list"></div>
+    </fieldset>
+    <label class="range only-mission"><span data-i18n="ctl.speed">SPEED</span>
+      <select id="m-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label>
+    <div class="only-anatomy tools" id="tools">
+      <p class="lbl" data-i18n="ctl.tools">TOOLS</p>
+      <button class="tg" id="t-xray" aria-pressed="false" data-i18n="ctl.xray">X-RAY</button>
+      <button class="tg" id="t-cut" aria-pressed="false" data-i18n="ctl.cut">CUTAWAY</button>
+      <button class="tg" id="t-cg" aria-pressed="false" data-i18n="ctl.cgcp">CG / CP</button>
+      <button class="tg" id="t-rot" aria-pressed="true" data-i18n="ctl.rotate">AUTO-ROTATE</button>
+      <button class="tg" id="t-reset" data-i18n="ctl.reset">RESET</button>
+    </div>
+    <label class="range"><span data-i18n="ctl.quality">QUALITY</span>
+      <select id="m-quality"><option value="auto" data-i18n="ctl.qAuto">AUTO</option><option value="high" data-i18n="ctl.qHigh">HIGH</option><option value="mid" data-i18n="ctl.qMid">BALANCED</option><option value="low" data-i18n="ctl.qLow">LOW</option></select></label>
+  </div>
+
+  <!-- tracking bracket + leader + card -->
+  <svg class="track" id="track" aria-hidden="true">
+    <path id="br" fill="none" stroke="#ff3b2f" stroke-width="1.5"/>
+    <polyline id="leader" fill="none" stroke="#ff3b2f" stroke-width="1"/>
+  </svg>
+  <div class="tcard" id="tcard" aria-live="polite">
+    <button id="tc-x" class="sheet-x tc-x" aria-label="Close"><svg aria-hidden="true"><use href="assets/icons.svg#i-close"/></svg></button>
+    <p class="k" id="tc-k">01</p>
+    <h3 id="tc-h">—</h3>
+    <dl id="tc-d"></dl>
+  </div>
+
+  <!-- phase banner -->
+  <div class="phase-banner only-mission" id="phase-banner" aria-live="polite"><span id="pb-t">—</span><small id="pb-s"></small></div>
+
+  <!-- bottom: graph + 4 panels -->
+  <div class="hud-bottom">
+    <div class="graph only-mission">
+      <div class="g-head"><span id="g-title" data-i18n="graph.alt">ALTITUDE OVER TIME</span><span id="g-read">—</span></div>
+      <svg id="graph" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+        <g id="g-grid"></g><polyline id="g-line" fill="none" stroke="#ff3b2f" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+        <polyline id="g-line2" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
+        <line id="g-head" x1="0" x2="0" y1="0" y2="80" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      </svg>
+    </div>
+    <!-- anatomy panels -->
+    <div class="panels only-anatomy">
+      <div class="pn"><p class="lbl" data-i18n="pn.height">HEIGHT</p><p class="num"><b data-count id="pn-h">70.0</b><small>M</small></p><p class="sub" id="pn-h-s">—</p></div>
+      <div class="pn"><p class="lbl" data-i18n="pn.mass">LIFTOFF MASS</p><p class="num"><b data-count id="pn-m">549</b><small>T</small></p><p class="sub" id="pn-m-s">—</p></div>
+      <div class="pn"><p class="lbl" data-i18n="pn.thrust">SEA-LEVEL THRUST</p><p class="num"><b data-count id="pn-t">7.6</b><small>MN</small></p><p class="sub" id="pn-t-s">—</p></div>
+      <div class="pn"><p class="lbl" data-i18n="pn.margin">STABILITY (CG−CP)</p><p class="num"><b data-count id="pn-s">0</b><small>M</small></p><p class="sub" id="pn-s-s">—</p></div>
+    </div>
+    <!-- flight HUD -->
+    <div class="panels fl only-mission">
+      <div class="pn eng">
+        <p class="lbl" id="eng-lbl-a">BOOSTER</p><svg id="eng-a" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
+        <p class="lbl" id="eng-lbl-b">SHIP</p><svg id="eng-b" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
+      </div>
+      <div class="pn wide">
+        <div class="ptrack" id="ptrack"><i class="pt-line"></i><i class="pt-fill" id="pt-fill"></i><i class="pt-dot" id="pt-dot"></i></div>
+        <p class="tplus"><b id="tplus">T+ 00:00:00</b></p>
+        <p class="sub" id="tsub">—</p>
+      </div>
+      <div class="pn tele">
+        <p class="lbl" data-i18n="hud.speed">SPEED</p><p class="num"><b id="v-spd">0</b><small>KM/H</small></p>
+        <p class="lbl" data-i18n="hud.alt">ALTITUDE</p><p class="num"><b id="v-alt">0</b><small>KM</small></p>
+      </div>
+    </div>
+  </div>
+  <div class="cross" id="cross" aria-hidden="true"></div>
+  <p class="toast" id="toast" role="status" hidden></p>
+</section>
+
+<!-- ============ SPECS ============ -->
+<section id="specs" class="sec">
+  <header class="sec-h"><p class="idx">01</p><h2 data-i18n="specs.title">Specifications</h2><p class="lead" data-i18n="specs.lead">Public figures, rounded. Both rockets at the same scale.</p></header>
+  <div class="cmp" id="cmp" aria-hidden="true"></div>
+  <div class="spec-grid">
+    <div class="kv" id="spec-f9"><h3>FALCON 9 <small data-i18n="specs.f9sub">Block 5 · 2 stages</small></h3><dl></dl></div>
+    <div class="kv" id="spec-ss"><h3>STARSHIP <small data-i18n="specs.sssub">Block 2 · Super Heavy + Ship</small></h3><dl></dl></div>
+  </div>
+  <div class="note">
+    <h3 data-i18n="specs.cgTitle">CG and CP: why don't real rockets have big tail fins?</h3>
+    <p data-i18n="specs.cgBody">A model rocket is stable when its centre of gravity (CG) sits above its centre of pressure (CP), usually by 1–2 body diameters, so fins are needed. Big rockets fly mostly above thick air and steer their engines (gimbal), so they stay controlled even with a small margin; the grid fins and flaps only work on the way back down. In this model the margin is negative: with no fins the CP sits above the CG, so the stack is aerodynamically unstable and engine gimbal keeps it pointed.</p>
+  </div>
+</section>
+
+<!-- ============ PHASES ============ -->
+<section id="phases" class="sec">
+  <header class="sec-h"><p class="idx">02</p><h2 data-i18n="phases.title">Flight phases</h2><p class="lead" data-i18n="phases.lead">From leaving the pad to the booster coming home.</p></header>
+  <div class="tabs" role="tablist">
+    <button role="tab" data-ph="f9" aria-selected="true">FALCON 9</button>
+    <button role="tab" data-ph="ss" aria-selected="false">STARSHIP · FLIGHT 11</button>
+  </div>
+  <ol class="phase-list" id="phase-list"></ol>
+</section>
+
+<!-- ============ SIM ============ -->
+<section id="sim" class="sec">
+  <header class="sec-h"><p class="idx">03</p><h2 data-i18n="sim.title">Trajectory simulation</h2><p class="lead" data-i18n="sim.lead">2-D simulation (gravity, atmosphere, rotating Earth) for Falcon 9; the Starship profile follows the Flight 11 timeline.</p></header>
+  <div class="sim-ctl">
+    <label class="range"><span data-i18n="sim.payload">PAYLOAD</span><input id="s-pay" type="range" min="0" max="22800" step="100" value="15000"><b id="s-pay-v">15.0 t</b></label>
+    <div class="seg inline" id="s-mode">
+      <button data-sm="asds" aria-pressed="true" data-i18n="sim.asds">DRONE SHIP</button>
+      <button data-sm="rtls" aria-pressed="false" data-i18n="sim.rtls">LANDING PAD</button>
+      <button data-sm="expend" aria-pressed="false" data-i18n="sim.expend">EXPEND BOOSTER</button>
+    </div>
+  </div>
+  <div class="sim-grid">
+    <div class="chart"><p class="lbl" data-i18n="sim.chartAlt">ALTITUDE (KM) — TIME (S)</p><svg id="c-alt" viewBox="0 0 600 260" role="img"></svg></div>
+    <div class="chart"><p class="lbl" data-i18n="sim.chartVel">SPEED (KM/H) — TIME (S)</p><svg id="c-vel" viewBox="0 0 600 260" role="img"></svg></div>
+    <div class="kv sim-kv"><h3 data-i18n="sim.results">RESULTS</h3><dl id="sim-out"></dl></div>
+  </div>
+  <div class="chart wide"><p class="lbl" data-i18n="sim.chartSS">STARSHIP FLIGHT 11 — ALTITUDE (KM) / TIME (MIN)</p><svg id="c-ss" viewBox="0 0 1200 260" role="img"></svg></div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section id="news" class="sec">
+  <header class="sec-h"><p class="idx">04</p><h2 data-i18n="news.title">News · Starship Flight 11</h2><p class="lead" data-i18n="news.lead">Summary of the article and related milestones.</p></header>
+  <article class="news-main">
+    <p class="meta"><span>TIỀN PHONG</span> · <time datetime="2025-10-14T08:14+07:00">14/10/2025 08:14 UTC+7</time></p>
+    <h3 data-i18n="news.headline">SpaceX launches the largest rocket in history into space</h3>
+    <ul class="facts" id="news-facts"></ul>
+    <a class="btn" href="https://tienphong.vn/spacex-phong-ten-lua-lon-nhat-lich-su-len-vu-tru-post1786919.tpo" target="_blank" rel="noopener"><span data-i18n="news.read">Read the original</span> ↗</a>
+  </article>
+  <ol class="news-time" id="news-time"></ol>
+</section>
+
+<!-- ============ SAFETY / SOURCES ============ -->
+<section id="safety" class="sec">
+  <header class="sec-h"><p class="idx">05</p><h2 data-i18n="safety.title">Notes &amp; sources</h2></header>
+  <div class="spec-grid">
+    <div class="note"><h3 data-i18n="safety.h1">About the model</h3><p data-i18n="safety.p1">An educational visualisation, not engineering data. Geometry is simplified, masses and timelines are public estimates, and the Falcon 9 trajectory comes from a simple 2-D model. No logos or trademarks are used.</p></div>
+    <div class="note"><h3 data-i18n="safety.h2">Data sources</h3>
+      <ul class="src">
+        <li><a href="https://tienphong.vn/spacex-phong-ten-lua-lon-nhat-lich-su-len-vu-tru-post1786919.tpo" target="_blank" rel="noopener">Tiền Phong — SpaceX phóng tên lửa lớn nhất lịch sử lên vũ trụ (14/10/2025)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Starship_flight_test_11" target="_blank" rel="noopener">Wikipedia — Starship flight test 11</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/SpaceX_Starship" target="_blank" rel="noopener">Wikipedia — SpaceX Starship</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Falcon_9" target="_blank" rel="noopener">Wikipedia — Falcon 9</a></li>
+        <li><a href="https://www.spacex.com/vehicles/falcon-9/" target="_blank" rel="noopener">spacex.com — Falcon 9 (public data)</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p>ROCKET // <span data-i18n="foot.made">Made for Khánh · educational model, not affiliated with SpaceX</span></p>
+  <p class="credit">Imagery: <a href="https://visibleearth.nasa.gov/" target="_blank" rel="noopener">NASA</a> — Blue Marble Next Generation, Black Marble, Blue Marble clouds, GEBCO topography (NASA Visible Earth) · Stars: Yale Bright Star Catalog via <a href="https://heasarc.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA HEASARC</a> · Launch / landing sites: <a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener">NASA GIBS</a> / Landsat WELD (NASA/USGS)</p>
+  <p><span id="foot-clock">—</span> UTC+7</p>
+</footer>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="vendor/ScrollToPlugin.min.js" defer></script>
+<script src="loader.js" defer></script>
+</body>
+</html>

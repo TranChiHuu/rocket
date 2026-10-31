@@ -1,0 +1,487 @@
+{
+ "meta": {
+  "title": "ROCKET // Falcon 9 & Starship in 3D",
+  "desc": "Interactive 3D anatomy and flight simulation of a Falcon 9-style rocket and Starship: parts, CG/CP, booster return, hot staging, tower catch. Vietnamese, English, Japanese, Korean."
+ },
+ "a11y": {
+  "skip": "Skip to content"
+ },
+ "loader": {
+  "label": "Booting systems"
+ },
+ "sys": {
+  "online": "SYSTEM ONLINE",
+  "clock": "CLOCK",
+  "vehicle": "VEHICLE",
+  "fps": "FPS"
+ },
+ "nav": {
+  "specs": "Specs",
+  "phases": "Phases",
+  "sim": "Simulation",
+  "news": "News",
+  "lang": "Language"
+ },
+ "ctl": {
+  "vehicle": "VEHICLE",
+  "mode": "MODE",
+  "anatomy": "ANATOMY",
+  "mission": "MISSION",
+  "scenario": "SCENARIO",
+  "landing": "LANDING SITE",
+  "boosterEnd": "BOOSTER END",
+  "camera": "CAMERA",
+  "tools": "TOOLS",
+  "explode": "EXPLODE",
+  "xray": "X-RAY",
+  "cut": "CUTAWAY",
+  "cgcp": "CG / CP",
+  "rotate": "AUTO-ROTATE",
+  "reset": "RESET",
+  "parts": "PARTS",
+  "play": "LAUNCH",
+  "pause": "PAUSE",
+  "resume": "RESUME",
+  "restart": "RESTART",
+  "speed": "SPEED",
+  "quality": "QUALITY",
+  "qHigh": "HIGH",
+  "qLow": "LOW",
+  "settings": "SETTINGS",
+  "replay": "REPLAY",
+  "qAuto": "AUTO",
+  "qMid": "BALANCED"
+ },
+ "scn": {
+  "f9": {
+   "booster": "FOLLOW BOOSTER",
+   "full": "TO ORBIT"
+  },
+  "ss": {
+   "ship": "FOLLOW SHIP",
+   "booster": "FOLLOW SUPER HEAVY"
+  }
+ },
+ "opt": {
+  "asds": "DRONE SHIP",
+  "rtls": "LANDING PAD",
+  "catch": "TOWER CATCH",
+  "gulf": "GULF SPLASH"
+ },
+ "cam": {
+  "auto": "AUTO",
+  "chase": "CHASE",
+  "onboard": "ONBOARD",
+  "booster": "INTERSTAGE",
+  "flap": "FLAP CAM",
+  "ground": "GROUND",
+  "wide": "WIDE"
+ },
+ "graph": {
+  "alt": "ALTITUDE OVER TIME"
+ },
+ "pn": {
+  "height": "HEIGHT",
+  "mass": "LIFTOFF MASS",
+  "thrust": "SEA-LEVEL THRUST",
+  "margin": "STABILITY (CG−CP)"
+ },
+ "pnsub": {
+  "f9": {
+   "h": "2 STAGES · Ø3.7 M",
+   "m": "~92% PROPELLANT",
+   "t": "9 ENGINES · ~845 KN EACH",
+   "s": "M · {cal} CAL · CP ABOVE CG → ENGINE GIMBAL STEERS"
+  },
+  "ss": {
+   "h": "SUPER HEAVY 71 M + SHIP 52 M",
+   "m": "~4,600 T PROPELLANT",
+   "t": "33 ENGINES · ~2.3 MN EACH",
+   "s": "M · {cal} CAL · CP ABOVE CG → ENGINE GIMBAL STEERS"
+  }
+ },
+ "hud": {
+  "speed": "SPEED",
+  "alt": "ALTITUDE",
+  "booster": "BOOSTER",
+  "ship": "SHIP",
+  "s2": "STAGE 2",
+  "ready": "READY · PRESS LAUNCH"
+ },
+ "stage": {
+  "booster": "STAGE 1 · BOOSTER",
+  "upper": "STAGE 2",
+  "ship": "SHIP",
+  "sh": "SUPER HEAVY",
+  "stack": "FULL STACK"
+ },
+ "tc": {
+  "stage": "STAGE",
+  "mass": "DRY MASS",
+  "prop": "PROPELLANT",
+  "dims": "SIZE",
+  "mat": "MATERIAL",
+  "alt": "ALT",
+  "spd": "SPEED",
+  "dr": "DOWNRANGE"
+ },
+ "mk": {
+  "cg": "CG · CENTRE OF GRAVITY",
+  "cp": "CP · CENTRE OF PRESSURE"
+ },
+ "ev": {
+  "prelaunch": "PRE-LAUNCH",
+  "liftoff": "LIFTOFF",
+  "maxq": "MAX-Q",
+  "meco": "MECO",
+  "sep": "STAGE SEP",
+  "ses": "STAGE 2 IGNITION",
+  "fairing": "FAIRING SEP",
+  "seco": "SECO",
+  "boostback": "BOOSTBACK",
+  "boostbackEnd": "BOOSTBACK END",
+  "gridfins": "GRID FINS",
+  "entry": "ENTRY BURN",
+  "landing": "LANDING BURN",
+  "legs": "LEGS DEPLOY",
+  "touchdownLZ": "TOUCHDOWN · PAD",
+  "touchdownASDS": "TOUCHDOWN · DRONE SHIP",
+  "hotstaging": "HOT STAGING",
+  "ringJettison": "RING JETTISON",
+  "bLanding": "BOOSTER LANDING BURN",
+  "catch": "TOWER CATCH",
+  "bSplash": "BOOSTER SPLASH",
+  "payload": "PAYLOAD DEPLOY",
+  "relight": "RAPTOR RELIGHT",
+  "peakHeat": "PEAK HEATING",
+  "transonic": "TRANSONIC",
+  "subsonic": "SUBSONIC",
+  "sLanding": "LANDING BURN",
+  "flip": "FLIP",
+  "splash": "SPLASHDOWN"
+ },
+ "evd": {
+  "prelaunch": "Propellant loaded, final checks",
+  "liftoff": "All engines at full thrust, the rocket clears the tower",
+  "maxq": "Maximum aerodynamic pressure: engines throttle down",
+  "meco": "Main engine cutoff on stage 1",
+  "sep": "Stage 1 and stage 2 separate",
+  "ses": "The single vacuum engine lights",
+  "fairing": "Fairing halves fall away above the thick atmosphere",
+  "seco": "Stage 2 cuts off: orbit reached",
+  "boostback": "Booster flips and burns back towards the launch site",
+  "boostbackEnd": "Boostback complete, coasting",
+  "gridfins": "Grid fins steer the falling booster",
+  "entry": "3 engines slow the booster before thick air",
+  "landing": "Single engine landing burn",
+  "legs": "Four legs unfold",
+  "touchdownLZ": "The booster lands on the pad",
+  "touchdownASDS": "The booster lands on the drone ship",
+  "hotstaging": "Ship engines light before separation",
+  "ringJettison": "The hot-staging ring is dropped",
+  "bLanding": "13 engines, then 5, slow Super Heavy",
+  "catch": "The tower arms catch the booster",
+  "bSplash": "Super Heavy hovers and drops into the Gulf",
+  "payload": "8 Starlink simulators deployed",
+  "relight": "One Raptor relit in space",
+  "peakHeat": "Plasma at ~1,400 °C wraps the heat shield",
+  "transonic": "Below Mach 1.2, flaps hold the belly-flop",
+  "subsonic": "Falling belly-first at ~300 km/h",
+  "sLanding": "Engines relight for the landing flip",
+  "flip": "The ship swings vertical",
+  "splash": "Splashdown in the Indian Ocean"
+ },
+ "parts": {
+  "merlin": {
+   "name": "9 MERLIN ENGINES",
+   "mat": "Inconel, copper alloy chamber",
+   "fn": "Nine kerosene/LOX engines in an octaweb: eight around one centre. Each gives ~845 kN at sea level and can throttle and relight for landing."
+  },
+  "legs": {
+   "name": "LANDING LEGS",
+   "mat": "Carbon fibre, aluminium honeycomb",
+   "fn": "Four folding legs deploy seconds before touchdown and absorb the impact."
+  },
+  "s1tank": {
+   "name": "STAGE 1 TANKS",
+   "mat": "Aluminium-lithium",
+   "fn": "LOX tank above the RP-1 tank, about 411 t of propellant in total; the common skin is the rocket's main structure."
+  },
+  "interstage": {
+   "name": "INTERSTAGE",
+   "mat": "Carbon fibre composite",
+   "fn": "Connects the two stages and covers the vacuum engine; pneumatic pushers separate the stages."
+  },
+  "gridfins": {
+   "name": "GRID FINS",
+   "mat": "Cast titanium",
+   "fn": "Four lattice fins steer the booster during descent like rudders."
+  },
+  "mvac": {
+   "name": "VACUUM ENGINE",
+   "mat": "Niobium nozzle extension",
+   "fn": "One engine with a huge nozzle optimised for vacuum: ~981 kN."
+  },
+  "s2tank": {
+   "name": "STAGE 2 TANKS",
+   "mat": "Aluminium-lithium",
+   "fn": "~107 t of propellant to finish the climb to orbit."
+  },
+  "capsule": {
+   "name": "CREW CAPSULE",
+   "mat": "Composite, PICA heat shield",
+   "fn": "Capsule configuration: crew or cargo to the space station."
+  },
+  "payload": {
+   "name": "PAYLOAD",
+   "mat": "—",
+   "fn": "The satellite being launched, mounted on an adapter."
+  },
+  "fairing": {
+   "name": "FAIRING",
+   "mat": "Carbon fibre over aluminium core",
+   "fn": "Two shells protect the payload through the atmosphere, then split apart."
+  },
+  "raptors": {
+   "name": "33 RAPTOR ENGINES",
+   "mat": "Superalloys",
+   "fn": "Full-flow methane/LOX engines: 13 centre engines gimbal, 20 outer ones are fixed. ~74 MN together."
+  },
+  "shTank": {
+   "name": "SUPER HEAVY TANKS",
+   "mat": "Stainless steel 304L",
+   "fn": "About 3,400 t of liquid methane and oxygen in steel tanks."
+  },
+  "gridfinsSH": {
+   "name": "SUPER HEAVY GRID FINS",
+   "mat": "Stainless steel",
+   "fn": "Steer the booster and act as lifting points for the tower catch."
+  },
+  "hotRing": {
+   "name": "HOT-STAGING RING",
+   "mat": "Stainless steel, vented",
+   "fn": "Vented ring that lets the ship light its engines while still attached."
+  },
+  "shipEngines": {
+   "name": "SHIP ENGINES",
+   "mat": "Superalloys",
+   "fn": "3 sea-level Raptors for landing and 3 vacuum Raptors for the climb to orbit."
+  },
+  "shipTank": {
+   "name": "SHIP TANKS",
+   "mat": "Stainless steel 304L",
+   "fn": "~1,500 t of propellant plus header tanks for the landing flip."
+  },
+  "payloadBay": {
+   "name": "PAYLOAD BAY",
+   "mat": "Stainless steel",
+   "fn": "A 'Pez dispenser' slot releases Starlink satellites one by one."
+  },
+  "heatshield": {
+   "name": "HEAT SHIELD",
+   "mat": "Hexagonal ceramic tiles",
+   "fn": "~18,000 black hex tiles protect the belly from ~1,400 °C plasma."
+  },
+  "flaps": {
+   "name": "FLAPS",
+   "mat": "Stainless steel",
+   "fn": "Two forward and two aft flaps steer the belly-flop, like a skydiver's arms and legs."
+  }
+ },
+ "specs": {
+  "title": "Specifications",
+  "lead": "Public figures, rounded. Both rockets at the same scale.",
+  "f9sub": "Block 5 · 2 stages",
+  "sssub": "Block 2 · Super Heavy + Ship",
+  "cmpAria": "Height comparison of Falcon 9 and Starship",
+  "building": "10-STOREY BUILDING ~30 M",
+  "cgTitle": "CG and CP: why don't real rockets have big tail fins?",
+  "cgBody": "A model rocket is stable when its centre of gravity (CG) sits above its centre of pressure (CP), usually by 1–2 body diameters, so fins are needed. Big rockets fly mostly above thick air and steer their engines (gimbal), so they stay controlled even with a small margin; the grid fins and flaps only work on the way back down. In this model the margin is negative: with no fins the CP sits above the CG, so the stack is aerodynamically unstable and engine gimbal keeps it pointed."
+ },
+ "spec": {
+  "k": {
+   "height": "Height",
+   "diam": "Diameter",
+   "mass": "Liftoff mass",
+   "stages": "Stages",
+   "engines": "Engines",
+   "thrust": "Sea-level thrust",
+   "leoExp": "LEO payload (expended)",
+   "leoReuse": "LEO payload (reused)",
+   "gto": "GTO payload",
+   "leo": "LEO payload",
+   "prop": "Propellant",
+   "recovery": "Recovery",
+   "f11": "Flight 11"
+  },
+  "v": {
+   "f9eng": "9 Merlin 1D + 1 MVac",
+   "f9rec": "Booster lands on legs (drone ship or pad)",
+   "sseng": "33 Raptor + 6 Raptor",
+   "ssleo": "100–150 t (target, reusable)",
+   "ssrec": "Booster tower catch; ship designed for catch",
+   "f11": "13/10/2025 (US) · 14/10/2025 06:23 UTC+7 · ~66 min"
+  }
+ },
+ "phases": {
+  "title": "Flight phases",
+  "lead": "From leaving the pad to the booster coming home.",
+  "f9": [
+   {
+    "t": "T+0",
+    "h": "Liftoff",
+    "p": "Nine engines at ~7.6 MN lift 549 t. The rocket rises vertically, then pitches slightly east."
+   },
+   {
+    "t": "T+1:12",
+    "h": "Max-Q",
+    "p": "Highest aerodynamic pressure. The engines throttle down briefly so the structure is not overloaded."
+   },
+   {
+    "t": "T+2:30",
+    "h": "MECO & separation",
+    "p": "Stage 1 shuts down at ~70 km and ~8,000 km/h; the stages separate and the vacuum engine lights."
+   },
+   {
+    "t": "T+2:40",
+    "h": "Flip & boostback",
+    "p": "For a pad return the booster flips and burns back. For a drone ship it only flips and coasts on."
+   },
+   {
+    "t": "T+6:30",
+    "h": "Entry burn",
+    "p": "Three engines fire for ~20 s to slow from ~5,000 km/h, protecting the booster from heating."
+   },
+   {
+    "t": "T+8:00",
+    "h": "Landing",
+    "p": "One engine, legs out, about 2 m/s at touchdown on the drone ship or landing pad."
+   },
+   {
+    "t": "T+8:30",
+    "h": "Orbit",
+    "p": "Stage 2 cuts off at ~27,000 km/h: the payload is in orbit."
+   }
+  ],
+  "ss": [
+   {
+    "t": "T+0",
+    "h": "Liftoff · Starbase",
+    "p": "33 Raptors, ~74 MN. Flight 11 lifted off on 13/10/2025 (US), 06:23 on 14/10 UTC+7."
+   },
+   {
+    "t": "T+2:40",
+    "h": "Hot staging",
+    "p": "The ship lights its 6 engines while still attached, pushing off through the vented ring."
+   },
+   {
+    "t": "T+2:50",
+    "h": "Boostback",
+    "p": "Super Heavy flips, burns back, drops the ring and heads for the Gulf of Mexico."
+   },
+   {
+    "t": "T+6:36",
+    "h": "Booster splash",
+    "p": "13 then 5 engines slow the booster to a hover before it drops into the sea (or is caught by the tower)."
+   },
+   {
+    "t": "T+18",
+    "h": "Payload",
+    "p": "The ship coasts and deploys 8 Starlink simulators through the payload door."
+   },
+   {
+    "t": "T+38",
+    "h": "Raptor relight",
+    "p": "One engine is relit in space, rehearsing a deorbit burn."
+   },
+   {
+    "t": "T+48",
+    "h": "Reentry",
+    "p": "Belly-first at ~26,000 km/h; plasma wraps the hex tiles while the flaps steer."
+   },
+   {
+    "t": "T+66",
+    "h": "Flip & splashdown",
+    "p": "Engines relight, the ship swings vertical and splashes down in the Indian Ocean."
+   }
+  ]
+ },
+ "sim": {
+  "title": "Trajectory simulation",
+  "lead": "2-D simulation (gravity, atmosphere, rotating Earth) for Falcon 9; the Starship profile follows the Flight 11 timeline.",
+  "payload": "PAYLOAD",
+  "asds": "DRONE SHIP",
+  "rtls": "LANDING PAD",
+  "expend": "EXPEND BOOSTER",
+  "chartAlt": "ALTITUDE (KM) — TIME (S)",
+  "chartVel": "SPEED (KM/H) — TIME (S)",
+  "results": "RESULTS",
+  "chartSS": "STARSHIP FLIGHT 11 — ALTITUDE (KM) / TIME (MIN)",
+  "o": {
+   "orbit": "Orbit",
+   "noOrbit": "Not reached",
+   "maxq": "Max-Q",
+   "maxg": "Peak g",
+   "meco": "MECO",
+   "seco": "SECO",
+   "s2left": "Stage 2 prop left",
+   "land": "Booster landing",
+   "vtouch": "Touchdown speed",
+   "propLeft": "Booster prop left",
+   "apogeeB": "Booster apogee",
+   "expended": "Booster expended"
+  }
+ },
+ "news": {
+  "title": "News · Starship Flight 11",
+  "lead": "Summary of the article and related milestones.",
+  "headline": "SpaceX launches the largest rocket in history into space",
+  "read": "Read the original",
+  "facts": [
+   "On the night of 13/10 (US time), Starship, the largest and most powerful rocket ever built, launched from the southern tip of Texas.",
+   "This was the 11th test flight; the booster separated and headed into the Gulf of Mexico as planned.",
+   "The ship carried 8 Starlink simulator satellites and flew halfway around the world before splashing down in the Indian Ocean.",
+   "The whole flight lasted just over an hour, from the Starbase site near the Mexican border.",
+   "Tests over the Indian Ocean rehearse a future return to the launch site; the August flight had also succeeded on a similar route.",
+   "Starship is meant to take people to Mars, and nearer term to land NASA astronauts on the Moon later this decade."
+  ],
+  "timeline": [
+   {
+    "t": "14/10/2025 06:23 UTC+7",
+    "p": "Liftoff from Starbase, Texas (13/10, 18:23 local)."
+   },
+   {
+    "t": "+2 min 40 s",
+    "p": "Hot staging; Super Heavy boosts back towards the Gulf."
+   },
+   {
+    "t": "+6 min 40 s",
+    "p": "Booster landing burn and splashdown in the Gulf of Mexico."
+   },
+   {
+    "t": "+~18 min",
+    "p": "8 Starlink simulators deployed."
+   },
+   {
+    "t": "+~66 min",
+    "p": "Ship splashes down in the Indian Ocean (~07:29 UTC+7)."
+   },
+   {
+    "t": "14/10/2025 08:14 UTC+7",
+    "p": "Tiền Phong publishes the report."
+   }
+  ]
+ },
+ "safety": {
+  "title": "Notes & sources",
+  "h1": "About the model",
+  "p1": "An educational visualisation, not engineering data. Geometry is simplified, masses and timelines are public estimates, and the Falcon 9 trajectory comes from a simple 2-D model. No logos or trademarks are used.",
+  "h2": "Data sources"
+ },
+ "foot": {
+  "made": "Made for Khánh · educational model, not affiliated with SpaceX"
+ },
+ "toast": {
+  "lowq": "Lowered quality for smoother playback"
+ }
+}
